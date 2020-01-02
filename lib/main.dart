@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 void main ()=> runApp(MyApp());
@@ -81,9 +80,7 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 50.0
                   ),
-                  // Icon(Icons.beenhere,
-                  // color: Colors.white,
-                  // size: 80,),
+                  
                   Text("When people have not learned to interpret the past, to read the present; and to imagine and empower the future, they are living a life without a punchline, clueless about the story they are embarked upon. Not on the shortlist",
                   textAlign: TextAlign.justify,
                   style: TextStyle(
@@ -94,12 +91,20 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(
                     height: 100.0,
                   ),
-                  FlatButton.icon(
-                    icon: Icon(Icons.send), 
-                    label: Text("Let's Dance",), 
-                    onPressed: () {},
-                    color: Colors.white,
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12.0, right: 12.0, left: 12.0, bottom: 13.0),
+                    child: FlatButton.icon(
+                      icon: Icon(Icons.send), 
+                      label: Text("Let's Dance",), 
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LetsDance()),
+                        );
+                      },
+                      color: Colors.white,
+                      ),
+                  ),
                   SizedBox(
                     height: 50.0,
                   ),
@@ -119,8 +124,55 @@ class LetsDance extends StatefulWidget {
 class _LetsDanceState extends State<LetsDance> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[
+              Colors.black,
+              Colors.white
+            ], stops: [
+              0.0,
+              1.0
+            ],
+            begin: FractionalOffset.topCenter,
+            end: FractionalOffset.bottomCenter,
+            tileMode: TileMode.mirror
+          ),
+        ),
+        child: Container(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text("Let's Move In Styles",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 50,
+                ),),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: FlatButton.icon(
+                    icon: Icon(Icons.more_vert),
+                    label: Text("Ayiii"),
+                    onPressed: () {},
+                  ),
+                ),
+                FlatButton.icon(
+                  icon: Icon(Icons.info),
+                  label: Text("Today"),
+                  onPressed: (){},
+                  color: Colors.transparent,
+                  colorBrightness: Brightness.light,
+                  disabledColor: Colors.black,
+                  highlightColor: Colors.white,
+                  padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+                )
+              ],
+            )
+          ),
+        ),
+      ),
     );
   }
 }
