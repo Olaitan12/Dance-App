@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/detailpage.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 void main ()=> runApp(MyApp());
@@ -182,39 +183,47 @@ class _LetsDanceState extends State<LetsDance> {
                 autoplay: false,
                 viewportFraction: 0.7,
                 itemBuilder: (BuildContext context,int index){
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16.0),
-                        child: Stack(
-                        children: <Widget>[
-                          Positioned.fill(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16.0),
-                              child: Image.asset('assets/chaperone.jpg', 
-                                fit: BoxFit.cover))),
-                                Positioned(
-                                  top: 8,
-                                  right: 8,
-                                  child: Icon(Icons.favorite_border, color: Colors.white),
-                                ),
-                          Positioned(
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: Container(
-                              color: Colors.black12,
-                              child: Text(
-                                "Let's dance away sorrows", 
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'AbrilFatface',
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
-                              textAlign: TextAlign.center,)
-                            ),
-                          )
-                        ],
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context, MaterialPageRoute(
+                        builder: (context) => DetailPage(
+                          heroTag: index.toString(),
+                        )));
+                    },
+                      child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16.0),
+                          child: Stack(
+                          children: <Widget>[
+                            Positioned.fill(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16.0),
+                                child: Image.asset('assets/chaperone.jpg', 
+                                  fit: BoxFit.cover))),
+                                  Positioned(
+                                    top: 8,
+                                    right: 8,
+                                    child: Icon(Icons.favorite_border, color: Colors.white),
+                                  ),
+                            Positioned(
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: Container(
+                                color: Colors.black12,
+                                child: Text(
+                                  "Let's dance away sorrows", 
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: 'AbrilFatface',
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20),
+                                textAlign: TextAlign.center,)
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   );
