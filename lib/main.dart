@@ -172,6 +172,7 @@ class _LetsDanceState extends State<LetsDance> {
       body: Container(
         color: Colors.black,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             SizedBox(
               width: double.infinity,
@@ -184,14 +185,19 @@ class _LetsDanceState extends State<LetsDance> {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8.0),
+                        borderRadius: BorderRadius.circular(16.0),
                         child: Stack(
                         children: <Widget>[
                           Positioned.fill(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20.0),
-                              child: Image.asset('assets/hehehe.jpg', 
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Image.asset('assets/chaperone.jpg', 
                                 fit: BoxFit.cover))),
+                                Positioned(
+                                  top: 8,
+                                  right: 8,
+                                  child: Icon(Icons.favorite_border, color: Colors.white),
+                                ),
                           Positioned(
                             bottom: 0,
                             left: 0,
@@ -201,13 +207,41 @@ class _LetsDanceState extends State<LetsDance> {
                               child: Text(
                                 "Let's dance away sorrows", 
                                 style: TextStyle(
-                                  color: Colors.white),
-                              textAlign: TextAlign.center,),
+                                  color: Colors.white,
+                                  fontFamily: 'AbrilFatface',
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20),
+                              textAlign: TextAlign.center,)
                             ),
                           )
                         ],
                       ),
                     ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Dance Moves",
+               style: TextStyle(
+                color: Colors.white,
+                fontFamily: 'AbrilFatface',
+                fontWeight: FontWeight.bold,
+                fontSize: 28)),
+            ),
+            SizedBox(
+              width: double.infinity,
+              height: 150,
+              child: ListView.builder(
+                itemCount: 5,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index){
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Image.asset('assets/lalala.jpg', fit: BoxFit.cover,)),
                   );
                 },
               ),
