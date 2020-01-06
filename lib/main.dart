@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 void main ()=> runApp(MyApp());
 
@@ -122,55 +123,93 @@ class LetsDance extends StatefulWidget {
 }
 
 class _LetsDanceState extends State<LetsDance> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: <Color>[
-              Colors.black,
-              Colors.white
-            ], stops: [
-              0.0,
-              1.0
-            ],
-            begin: FractionalOffset.topCenter,
-            end: FractionalOffset.bottomCenter,
-            tileMode: TileMode.mirror
-          ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.black,
+        elevation: 0,
+        centerTitle: false,
+        title: Padding(
+          padding: const EdgeInsets.all(0.0),
+          child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text("Let's", style: TextStyle(
+              fontSize: 20, 
+              fontWeight: FontWeight.bold, 
+              color: Colors.white,
+              ),
+            ),
+            Text("Dance", style: TextStyle(
+              fontSize: 20, 
+              fontWeight: FontWeight.bold, 
+              color: Colors.white,
+              ),
+            ),
+          ],
         ),
-        child: Container(
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text("Let's Move In Styles",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 50,
-                ),),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: FlatButton.icon(
-                    icon: Icon(Icons.more_vert),
-                    label: Text("Ayiii"),
-                    onPressed: () {},
-                  ),
-                ),
-                FlatButton.icon(
-                  icon: Icon(Icons.info),
-                  label: Text("Today"),
-                  onPressed: (){},
-                  color: Colors.transparent,
-                  colorBrightness: Brightness.light,
-                  disabledColor: Colors.black,
-                  highlightColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(9.0),
+            child: Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/face.jpg'),
+                  fit: BoxFit.cover,
                 )
-              ],
+              ),
+            ),
+          )
+        ],
+      ),
+      body: Container(
+        color: Colors.black,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              width: double.infinity,
+              height: 300,
+              child: Swiper(
+                itemCount: 5,
+                autoplay: false,
+                viewportFraction: 0.7,
+                itemBuilder: (BuildContext context,int index){
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Stack(
+                        children: <Widget>[
+                          Positioned.fill(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16.0),
+                              child: Image.asset('assets/chaperone.jpg', 
+                                fit: BoxFit.cover))),
+                          Positioned(
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              child: Text("Let's dance away sorrows",
+                              textAlign: TextAlign.center,),
+                            ),
+                          )
+                        ],
+                    ),
+                      ),
+                  );
+                },
+              ),
             )
-          ),
+          ],
         ),
       ),
     );
