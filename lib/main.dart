@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/splash.jpeg"),
+            image: AssetImage("assets/chaperone.jpg"),
             fit: BoxFit.cover
           ),
         ),
@@ -93,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                     height: 100.0,
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 12.0, right: 12.0, left: 12.0, bottom: 13.0),
+                    padding: const EdgeInsets.all(9.0),
                     child: FlatButton.icon(
                       icon: Icon(Icons.send), 
                       label: Text("Let's Dance",), 
@@ -123,7 +123,6 @@ class LetsDance extends StatefulWidget {
 }
 
 class _LetsDanceState extends State<LetsDance> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -190,21 +189,25 @@ class _LetsDanceState extends State<LetsDance> {
                         children: <Widget>[
                           Positioned.fill(
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(16.0),
-                              child: Image.asset('assets/chaperone.jpg', 
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Image.asset('assets/hehehe.jpg', 
                                 fit: BoxFit.cover))),
                           Positioned(
                             bottom: 0,
                             left: 0,
                             right: 0,
                             child: Container(
-                              child: Text("Let's dance away sorrows",
+                              color: Colors.black12,
+                              child: Text(
+                                "Let's dance away sorrows", 
+                                style: TextStyle(
+                                  color: Colors.white),
                               textAlign: TextAlign.center,),
                             ),
                           )
                         ],
-                    ),
                       ),
+                    ),
                   );
                 },
               ),
